@@ -187,7 +187,6 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
     [self sharedView].fadeOutAnimationDuration = duration;
 }
 
-
 #pragma mark - Show Methods
 
 + (void)show {
@@ -1204,7 +1203,11 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
 #pragma mark - Getters
 
 + (NSTimeInterval)displayDurationForString:(NSString*)string {
-    return MAX((float)1.5, [self sharedView].minimumDismissTimeInterval);
+    if (string.length < 10) {
+        return 0.8f;
+    } else {
+        return 1.1f;
+    }
 }
 
 - (UIColor*)foregroundColorForStyle {
